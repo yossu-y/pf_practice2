@@ -4,6 +4,16 @@ Rails.application.routes.draw do
     get 'homes/top'
     get 'homes/about'
   end
+  namespace :public do
+    get 'users/show'
+    get 'users/edit'
+  end
+  namespace :public do
+    get 'articles/index'
+    get 'articles/edit'
+    get 'articles/show'
+    get 'articles/new'
+  end
   # 利用者用
   
   devise_for :users,skip: [:passwords], controllers: {
