@@ -1,22 +1,20 @@
 <h1>Public::Users#show</h1>
 <p>Find me in app/views/public/users/show.html.erb</p>
 
+
 <table>
+  
   <tr>
     <th>ニックネーム</th>
-    <td><%= @user.screen_name %></td>
+    <th>
+      <%= link_to edit_user_path do %>
+        <%= @user.screen_name %>
+      <% end %>
+    </th>
   </tr>
   <tr>
     <th>紹介文</th>
-    <td><%= @user.introduction %></td>
+    <th><%= @user.introduction %></th>
   </tr>
 </table>
-
-
-<%= link_to "マイページ編集", edit_user_path %><br>
-
-<%= link_to "新規投稿", new_article_path %><br>
-<%= link_to "投稿一覧", articles_path %><br>
-<%= link_to "投稿編集", edit_article_path %><br>
-<%= link_to "投稿詳細", article_path %><br>
 
