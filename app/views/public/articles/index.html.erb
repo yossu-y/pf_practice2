@@ -6,7 +6,11 @@
 <table>
   <tr>
     <td>タイトル</td>
-    <td><%= article.title %></td>
+    <td>
+      <%= link_to article_path(article.id) do %>
+        <%= article.title %>
+      <% end %>
+    </td>
   </tr>
   <tr>
     <td>内容</td>
