@@ -8,6 +8,7 @@
   <%= link_to "ログイン", new_user_session_path %><br>
 <% end %>
 
+<%= link_to "新規投稿", new_article_path %><br>
 <%= link_to "アバウト", about_path %><br>
-
+<%= link_to "マイページ", my_page_path(current_user.id) %>
 

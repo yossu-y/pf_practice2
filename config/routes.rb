@@ -12,11 +12,14 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "about" => "homes#about", as: "about"
     
+    resources :articles
+    
     get "users/my_page/:id" => "users#show", as: "my_page"
     get "users/unsubscribe/:id" => "users#unsubscribe", as: "unsubscribe"
     resources :users, only: [:edit, :update, :show]
     
-    resources :articles, only: [:index, :show, :edit, :new, :destroy, :update]
+    
+    
   end
   
   
