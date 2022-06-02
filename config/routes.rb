@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   
   # 利用者用
   
+  devise_for :users,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+  
   scope module: :public do
     
     root to: "homes#top"
@@ -14,10 +19,7 @@ Rails.application.routes.draw do
     resources :articles, only: [:index, :show, :edit, :new, :destroy, :update]
   end
   
-  devise_for :users,skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
+  
 
   
   # 管理者用
