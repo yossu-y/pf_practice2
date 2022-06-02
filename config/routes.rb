@@ -1,27 +1,24 @@
 Rails.application.routes.draw do
   
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
-  namespace :public do
-    get 'users/show'
-    get 'users/edit'
-  end
-  namespace :public do
-    get 'articles/index'
-    get 'articles/edit'
-    get 'articles/show'
-    get 'articles/new'
-  end
   # 利用者用
+  
+  scope module: :public do
+    
+    root to: "homes#top"
+    get "about" => "homes#about", as: "about"
+    
+    get "users/my_page/:id" => "users#show", as: "my_page"
+    get "users/unsubscribe/:id" => "users#unsubscribe", as: "unsubscribe"
+    resources :users, only: [:edit, :update, :show]
+    
+    resources :articles, only: [:index, :show, :edit, :new, :destroy, :update]
+  end
   
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
 
-  
   
   # 管理者用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
