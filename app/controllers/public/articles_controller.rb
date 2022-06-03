@@ -1,7 +1,7 @@
 class Public::ArticlesController < ApplicationController
+  before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update, :destroy]
 
-  
   def new
     @article = Article.new
   end
@@ -17,6 +17,7 @@ class Public::ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @comment = Comment.new
   end
   
   def create
